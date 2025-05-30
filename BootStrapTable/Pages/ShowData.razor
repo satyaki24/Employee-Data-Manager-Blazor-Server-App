@@ -1,0 +1,75 @@
+﻿@page "/showdata"
+
+<h3 class="text-center mt-4">Employee Data</h3>
+<EditForm Model="newEmployee" OnValidSubmit="AddEmployee">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+<div class="container mt-3">
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Age</th>
+                <th>Department</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var emp in employees.Where(e => !e.isDeleted))
+            {
+                <tr>
+                    <td>@emp.Id</td>
+                    @if (editEmployee != null && editEmployee.Id == emp.Id)
+                    {
+                        <td><InputText class="form-control" @bind="editEmployee.Name" /></td>
+                        <td><InputText class="form-control" @bind="editEmployee.Email" /></td>
+                        <td><InputNumber class="form-control" @bind="editEmployee.Age" TValue="int" /></td>
+                        <td><InputText class="form-control" @bind="editEmployee.Department" /></td>
+                        <td>
+                            <button class="btn btn-success btn-sm" @onclick="SaveEdit">Save</button>
+                            <button class="btn btn-secondary btn-sm" @onclick="CancelEdit">Cancel</button>
+                        </td>
+                    }
+                    else
+                    {
+                        <td>@emp.Name</td>
+                        <td>@emp.Email</td>
+                        <td>@emp.Age</td>
+                        <td>@emp.Department</td>
+                        <td>
+                            <button class="btn btn-danger btn-sm" @onclick="()=>DeleteRow(emp.Id)">Delete</button>
+                            <button class="btn btn-primary btn-sm" @onclick="() => StartEdit(emp)">Edit</button>
+                        </td>
+                    }
+                </tr>
+            }
+                <tr>
+                    <td><span class="text-muted">Auto</span></td>
+                    <td>
+                        <InputText class="form-control" @bind-Value="newEmployee.Name" />
+                        <ValidationMessage For="@(() => newEmployee.Name)" />
+                    </td>
+                    <td>
+                        <InputText class="form-control" @bind-Value="newEmployee.Email" />
+                        <ValidationMessage For="@(() => newEmployee.Email)" />
+                    </td>
+                    <td>
+                        <InputNumber class="form-control" @bind-Value="newEmployee.Age" />
+                        <ValidationMessage For="@(() => newEmployee.Age)" />
+                    </td>
+                    <td>
+                        <InputText class="form-control" @bind-Value="newEmployee.Department" />
+                        <ValidationMessage For="@(() => newEmployee.Department)" />
+                    </td>
+                    <td>
+                        <button class="btn btn-success btn-sm" type="submit">Add</button>
+                    </td>
+                </tr>
+        </tbody>
+    </table>
+</div>
+</EditForm>
+
