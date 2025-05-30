@@ -26,7 +26,7 @@ A simple Blazor Server application to manage employee records. It supports:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/your-repo-name.git
+   git clone https://github.com/your-username/Employee-Data-Manager-Blazor-Server-App.git
 2. Open the solution in Visual Studio 2022
 
 3. Make sure .NET 6 SDK is installed
