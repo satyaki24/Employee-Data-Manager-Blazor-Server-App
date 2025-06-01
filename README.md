@@ -1,26 +1,28 @@
 # Employee Data Manager - Blazor Server App
 
-A simple Blazor Server application to manage employee records. It supports:
+A Blazor Server application to manage employee records with a modern, responsive UI.
+It allows users to add, edit, and soft delete employee data inline within a Bootstrap-styled table.
 
-- Adding new employees
-- Inline editing of employee details
-- Soft deletion (records are hidden, not removed)
-- Form validation using data annotations
-- Bootstrap-styled responsive UI
+### Why use it?
+- Managing tabular data interactively is a common requirement in business apps. This project:
+- Demonstrates inline editing, soft delete, and validation using Blazor Server
+- Uses data annotations for enforcing input correctness
+- Offers a clean and responsive UI with Bootstrap 5
+- Provides a foundation for extending to database-backed apps
+
+###  Features
+- Add Employees: Add entries with form validation.
+- Inline Edit: Edit employee data directly in the table with Save/Cancel actions.
+- Soft Delete: Deletes are non-destructive (records are hidden, not removed).
+- Form Validation: Uses [Required], [EmailAddress], [Range], etc.
+- Auto ID Assignment: Automatically increments IDs for new entries.
+- Responsive UI: Styled with Bootstrap for cross-device compatibility.
 
 ## Tech Stack
 
 - .NET 6
 - Blazor Server
 - Bootstrap 5
-
-## Features
-
-- Inline editing with Save/Cancel
-- Validation for name, email, age, and department
-- Auto-generated IDs for new entries
-- Soft delete implementation
-- Clean UI using Bootstrap table
 
 ## How to Run
 
@@ -31,7 +33,9 @@ A simple Blazor Server application to manage employee records. It supports:
 
 3. Make sure .NET 6 SDK is installed
 
-4. Run the app and navigate to /showdata
+4. Run the app and navigate to
+   ```
+   /showdata
 
 ## Validation Rules
 Name: Required, max 15 characters, alphanumeric
